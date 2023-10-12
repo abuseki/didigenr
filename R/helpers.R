@@ -46,17 +46,27 @@ trsIdx2trsSegsCoords <- function(trs, ps){
 
 
 ################################################################################
-build_selectElemString <- function(xel, yel) {
+#' Title
+#'
+#' @param xel Element or element ratio on the diagram's x axis
+#' @param yel Element or element ratio on the diagram's y axis
+#' @param dataSrc Queried data frame to get the elements or their ratios
+#' @param categoryCol Name of the column in `dataSrc` holding the categories
+#'
+#' @return
+#'
+#' @examples
+build_getElemDataString <- function(xel, yel, dataSrc, categoryCol= "category") {
   xs <- strsplit(xel, '/', fixed = TRUE)[[1]]
   ys <- strsplit(yel, '/', fixed = TRUE)[[1]]
 
   # browser()
-  paste0("data.frame(category= inData[[categoryCol]], ",
-         "x= inData[['", xs[1], "']]",
-         if(!is.na(xs[2])) paste0("/inData[['", xs[2], "']]"),
+  paste0("data.frame(category= ", dataSrc, "[['", categoryCol, "']], ",
+         "x= ", dataSrc,"[['", xs[1], "']]",
+         if(!is.na(xs[2])) paste0("/", dataSrc,"[['", xs[2], "']]"),
          ", ",
-         "y= inData[['", ys[1], "']]",
-         if(!is.na(ys[2])) paste0("/inData[['", ys[2], "']]"),
+         "y= ", dataSrc,"[['", ys[1], "']]",
+         if(!is.na(ys[2])) paste0("/", dataSrc,"[['", ys[2], "']]"),
   ")")
 }
 ################################################################################
