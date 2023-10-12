@@ -10,26 +10,6 @@ trsIdx2trsSegsCoords <- function(trs, ps){
 
 
 ################################################################################
-# TODO move to own file e.g. diaPlotters.R
-################################################################################
-# plotCatsAndHulls <- function(ps, hs, xEl, yEl, facets= FALSE) {
-#   library(ggplot2)
-#   if (facets) library(patchwork)
-#
-#   p <- ggplot(data = ps, mapping= aes(x=x, y=y, color= category)) +
-#     geom_point(aes(shape= category)) +
-#     geom_polygon(data= hs, fill=NA) +
-#     labs(title = sprintf("%s vs. %s", xEl, yEl), x= xEl, y= yEl)
-#
-#
-#   if (facets)
-#     (p + facet_wrap(~category)) / p
-#   else
-#     p
-# }
-################################################################################
-
-################################################################################
 # TODO implement without dplyr, tidyr
 ################################################################################
 # prepareDataSet <- function(df, categoryCol, xEl, yEl) {
@@ -45,7 +25,6 @@ trsIdx2trsSegsCoords <- function(trs, ps){
 ################################################################################
 
 
-################################################################################
 #' Title
 #'
 #' @param xel Element or element ratio on the diagram's x axis
@@ -54,19 +33,13 @@ trsIdx2trsSegsCoords <- function(trs, ps){
 #' @param categoryCol Name of the column in `dataSrc` holding the categories
 #'
 #' @return
+#' @export
 #'
 #' @examples
-build_getElemDataString <- function(xel, yel, dataSrc, categoryCol= "category") {
-  xs <- strsplit(xel, '/', fixed = TRUE)[[1]]
-  ys <- strsplit(yel, '/', fixed = TRUE)[[1]]
-
-  # browser()
-  paste0("data.frame(category= ", dataSrc, "[['", categoryCol, "']], ",
-         "x= ", dataSrc,"[['", xs[1], "']]",
-         if(!is.na(xs[2])) paste0("/", dataSrc,"[['", xs[2], "']]"),
-         ", ",
-         "y= ", dataSrc,"[['", ys[1], "']]",
-         if(!is.na(ys[2])) paste0("/", dataSrc,"[['", ys[2], "']]"),
-  ")")
+getWorkingData <- function(xel, yel, dataSrc, categoryCol="category") {
+  with(dataSrc, data.frame(
+    category= dataSrc[[categoryCol]],
+    x= eval(parse(text=xel)),
+    y= eval(parse(text=yel))
+  ))
 }
-################################################################################

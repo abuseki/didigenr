@@ -19,7 +19,7 @@ data frame holding the x- and y-axis and the overlap rate of this diagram
 \description{
 \itemize{
 \item df [\code{categoryCol}, el1, el2, ..., elN
-\item diagrams wil be generated
+\item diagrams will be generated
 \item and all these dias will be rated
 }
 }

@@ -14,5 +14,5 @@ be named \code{x} and \code{y}}
 data.frame with the calculated overlap rates of the given polygons
 }
 \description{
-TODO put formulaes here
+TODO put formulas here
 }

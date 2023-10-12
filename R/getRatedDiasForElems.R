@@ -12,6 +12,9 @@
 #' @return data frame holding the x- and y-axis and the overlap rate of this diagram
 #' @export
 #'
+#' @importFrom doParallel registerDoParallel
+#' @importFrom foreach foreach '%dopar%'
+#'
 #' @examples
 getDiagramsRated <- function(inData, categoryCol= 'category', nCores= 1) {
   # get elements
@@ -19,16 +22,14 @@ getDiagramsRated <- function(inData, categoryCol= 'category', nCores= 1) {
   elems <- ns[which(!(ns %in% categoryCol))]
 
   # the diagrams to be generated
-  dias <- diagramsToGenerate(elems[1:20])
-  # or randomly
-  dias <- diagramsToGenerate(sample(elems[1:3], 3))
+  dias <- diagramsToGenerate(elems)
 
   # register parallel back-end
   message("'getDiagramsRated()' will use ", nCores, " cores!")
-  doParallel::registerDoParallel(nCores)
+  registerDoParallel(nCores)
 
-  olrs <- foreach::foreach(i= 1:nrow(dias), .combine = 'c') %dopar% {
-    rateDiagram(dias[i, 'x'], dias[i, 'y'], 'inData', categoryCol)
+  olrs <- foreach(i= 1:nrow(dias), .combine = 'c') %dopar% {
+    rateDiagram(dias[i, 'x'], dias[i, 'y'], inData, categoryCol)
   }
 
   olrs_ord <- order(olrs)

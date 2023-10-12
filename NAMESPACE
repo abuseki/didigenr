@@ -2,7 +2,7 @@
 
 export(diagramsToGenerate)
 export(getDiagramsRated)
-export(getPlotForDiagram)
+export(getWorkingData)
 export(overlapRates)
 export(rateDiagram)
 export(reducePointSet)
