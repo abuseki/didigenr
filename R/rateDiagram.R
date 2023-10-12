@@ -1,3 +1,15 @@
+#' Title
+#'
+#' @param xel
+#' @param yel
+#' @param ds
+#' @param categoryCol
+#'
+#' @return
+#' @export
+#'
+#' @importFrom stats na.omit
+#' @examples
 rateDiagram <- function(xel, yel, ds, categoryCol= 'category') {
   s <- build_getElemDataString(xel, yel, ds, categoryCol)
   # print(s)

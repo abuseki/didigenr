@@ -1,7 +1,20 @@
 #library(geometry)
 
 
-reducePnts_idx <- function(ps, c= .85, s=.95, e=.05) {
+#' Title
+#'
+#' @param ps
+#' @param c
+#' @param s
+#' @param e
+#'
+#' @return
+#' @export
+#'
+#' @importFrom geometry delaunayn
+#'
+#' @examples
+reducePointSet_idx <- function(ps, c= .85, s=.95, e=.05) {
   ## helper
   dist <- function(x, y) {
     sqrt(sum((x - y) ^ 2))
@@ -18,7 +31,7 @@ reducePnts_idx <- function(ps, c= .85, s=.95, e=.05) {
     N.next <- N.this <- nrow(ps)
 
     # Delaunay triangulation
-    trs <- geometry::delaunayn(ps)
+    trs <- delaunayn(ps)
 
     ## resolve triangle coordinates from triangle indices
     trs.coords <- cbind(
@@ -61,9 +74,22 @@ reducePnts_idx <- function(ps, c= .85, s=.95, e=.05) {
 }
 
 
-# Convenience function
+#' Title
+#'
+#' Convenience function that resolves the returned indices of
+#' [reducePointSet_idx] to points with coordinates
+#'
+#' @param ps Set of points as a matrix with x- and y-column
+#' @param c
+#' @param s
+#' @param e
+#'
+#' @return
+#' @export
+#'
+#' @examples
 reducePointSet<- function(ps, c= .85, s=.95, e=.05) {
-  ps[-reducePnts_idx(ps, c, s, e), ]
+  ps[-reducePointSet_idx(ps, c, s, e), ]
 }
 
 getReducedHull <- function(ps, c= .85, s=.95, e=.05) {
