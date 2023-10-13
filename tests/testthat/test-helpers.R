@@ -1,17 +1,24 @@
-test_that("build_getElemDataString does the job correctly", {
-  expect_equal(build_getElemDataString("A", "B", "inData"),
-    "data.frame(category= inData[['category']], x= inData[['A']], y= inData[['B']])"
+test_that("getWorkingData delivers the correct Data", {
+  df <- data.frame(
+    Baba=c(rep('C1', 5), rep('C2', 5)),
+    Ai=1:10,
+    Bi=11:20
   )
-  expect_equal(build_getElemDataString("A", "B", "df", "cat"),
-               "data.frame(category= df[['cat']], x= df[['A']], y= df[['B']])"
+
+  # diagramsToGenerate(c('Ai', 'Bi'))
+  expect_equal(getWorkingData('Ai', 'Bi', df, 'Baba'),
+               data.frame(category= df$Baba, x= df$Ai, y= df$Bi)
   )
-  expect_equal(build_getElemDataString("A/B", "B", "inData"),
-               "data.frame(category= inData[['category']], x= inData[['A']]/inData[['B']], y= inData[['B']])"
+  expect_equal(getWorkingData('Ai', 'Ai/Bi', df, 'Baba'),
+               data.frame(category= df$Baba, x= df$Ai, y= df$Ai/df$Bi)
   )
-  expect_equal(build_getElemDataString("A", "B/C", "inData"),
-               "data.frame(category= inData[['category']], x= inData[['A']], y= inData[['B']]/inData[['C']])"
+  expect_equal(getWorkingData('Ai', 'Bi/Ai', df, 'Baba'),
+               data.frame(category= df$Baba, x= df$Ai, y= df$Bi/df$Ai)
   )
-  expect_equal(build_getElemDataString("A/B", "B/A", "inData"),
-               "data.frame(category= inData[['category']], x= inData[['A']]/inData[['B']], y= inData[['B']]/inData[['A']])"
+  expect_equal(getWorkingData('Bi', 'Ai/Bi', df, 'Baba'),
+               data.frame(category= df$Baba, x= df$Bi, y= df$Ai/df$Bi)
+  )
+  expect_equal(getWorkingData('Bi', 'Bi/Ai', df, 'Baba'),
+               data.frame(category= df$Baba, x= df$Bi, y= df$Bi/df$Ai)
   )
 })

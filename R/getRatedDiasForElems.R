@@ -34,5 +34,5 @@ getDiagramsRated <- function(inData, categoryCol= 'category', nCores= 1) {
 
   olrs_ord <- order(olrs)
 
-  data.frame(cbind(x=dias[olrs_ord, 1], y=dias[olrs_ord, 2], olr=olrs[olrs_ord]))
+  data.frame(x=dias[olrs_ord, 1], y=dias[olrs_ord, 2], olr=olrs[olrs_ord])
 }

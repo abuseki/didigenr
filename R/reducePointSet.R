@@ -92,6 +92,19 @@ reducePointSet<- function(ps, c= .85, s=.95, e=.05) {
   ps[-reducePointSet_idx(ps, c, s, e), ]
 }
 
+
+
+#' Title
+#'
+#' @param ps
+#' @param c
+#' @param s
+#' @param e
+#'
+#' @return
+#' @export
+#'
+#' @examples
 getReducedHull <- function(ps, c= .85, s=.95, e=.05) {
   ps_redu <- reducePointSet(ps, c, s, e)
   ch <- chull(ps_redu)
