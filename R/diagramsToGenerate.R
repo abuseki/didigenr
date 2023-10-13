@@ -15,41 +15,47 @@ diagramsToGenerate <- function(elems) {
     }
   }
   elemsSet <- c(elems, pairs)
-  #num_pairs <- choose(length(elemsSet), 2)
 
   # diagrams to generate, combn returns a matrix which is an array
   diagrams <- combn(elemsSet, 2)
 
-  ## safety check length if diagrams need to be an even number
-  if(length(diagrams) %% 2 != 0) {
-    stop("length of diagrams is not an even number")
-  }
 
   # Filter inverse pairs like a/b vs b/a
-  idx2remove <- c()
   ## we need to find two consecutive elements containing '/'
-  ## 1st element must have an odd index, so we just take
-  ## every second index starting at one.
-  for (i in seq.int(1, length(diagrams), 2)) {
-    if (all(grepl('/', c(diagrams[i], diagrams[i+1])))) {
-      # fixed= TRUE we do not neeed an regexpr, speeds up things a little
-      a <- strsplit(diagrams[i], '/', fixed = TRUE)
-      b <- strsplit(diagrams[i+1], '/', fixed = TRUE)
-      if (
-        a[[1]][1] == b[[1]][2] &&
-        a[[1]][2] == b[[1]][1]
-      ) {
-        idx2remove <- c(idx2remove, i, i+1)
-      }
-    }
-  }
-  # remove inverse pairs, the are the diagrams to generate
-  d2g <- diagrams[-idx2remove]
+  ## we traverse the diagram matrix in colums
+  cols2rm <- which(apply(diagrams, 2, function(i) {
+          a <- unlist(strsplit(i[1], '/', fixed = TRUE))
+          b <- unlist(strsplit(i[2], '/', fixed = TRUE))
+
+          (a[1] == b[2] && a[2] == b[1])
+  }))
+
+  diagrams <- diagrams[, -cols2rm]
 
   # convert this to a data.frame
-  ndiags <- length(d2g)
-  odds <- seq(1, ndiags, 2)
-  evens <- seq(2, ndiags, 2)
+  data.frame(cbind(x= diagrams[1, ], y=diagrams[2, ]))
+}
 
-  data.frame(cbind(x= diagrams[odds], y=diagrams[evens]))
+
+
+#' Title
+#'
+#' Simple function to calculate the number of element (element ratio) pairs for
+#' a given number of elements. This is also the number of diagrams that will
+#' have to be processed.
+#'
+#' @param nElems number of elements for which the number of diagrams will be
+#'   calcuated
+#'
+#' @return
+#' @export
+#'
+#'
+#' @examples
+nDiagsForElems <- function(nElems) {
+  nElemRatios <- nElems*(nElems-1)
+  nTotalElems <- nElemRatios + nElems
+
+  # subtract inverse pairs, e.g A/B-B/A
+  choose(nTotalElems, 2) - nElemRatios/2
 }
