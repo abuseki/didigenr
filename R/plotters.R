@@ -15,6 +15,7 @@ getPlotForDiagram <- function(xel, yel, dataSrc, categoryCol= 'category', scaleA
 
     p <- ggplot(mapping=aes(x, y, color= category, shape=category)) +
     geom_point(data= d$catsPnts) +
+    geom_polygon(data= d$catsHulls, color='yellow', size= 1, fill=NA) +
     geom_polygon(data= d$catsHulls, fill=NA) +
     labs(
       title = sprintf("%s vs. %s", d$x, d$y),

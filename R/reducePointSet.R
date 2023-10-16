@@ -14,7 +14,7 @@
 #' @importFrom geometry delaunayn
 #'
 #' @examples
-reducePointSet_idx <- function(ps, c= .85, s=.95, e=.05) {
+getPointsToRemove <- function(ps, c= .85, s=.95, e=.05) {
   ## helper
   dist <- function(x, y) {
     sqrt(sum((x - y) ^ 2))
@@ -60,7 +60,7 @@ reducePointSet_idx <- function(ps, c= .85, s=.95, e=.05) {
         message("Adjusted s to ", s)
       }
     }
-    message("N.next/N.start=", N.next/N.start)
+    #message("N.next/N.start=", N.next/N.start)
 
     ## remove the points for possible
     ps <- ps[-ps2rm, ]
@@ -89,7 +89,7 @@ reducePointSet_idx <- function(ps, c= .85, s=.95, e=.05) {
 #'
 #' @examples
 reducePointSet<- function(ps, c= .85, s=.95, e=.05) {
-  ps[-reducePointSet_idx(ps, c, s, e), ]
+  ps[-getPointsToRemove(ps, c, s, e), ]
 }
 
 

@@ -15,22 +15,26 @@ processDiagram <- function(xel, yel, dataSrc, categoryCol= 'category', scaleAxes
   # get rid of NAs
   t <- na.omit(t)
 
-  if (scaleAxes) {
-    r <- (max(t$y) - min(t$y)) / (max(t$x) - min(t$x))
-    t$x <- t$x*r
-  }
-
   catsPnts <- split(t, t$category)
-  catsHulls <- lapply(catsPnts, function(x) getReducedHull(x[2:3]))
-  hs <- do.call(rbind,
-          lapply(names(catsHulls), function(c)
-            cbind(category= rep(c, nrow(catsHulls[[c]])), x= catsHulls[[c]]['x'], y= catsHulls[[c]]['y'])
-          )
-  )
+  catsHulls <- lapply(catsPnts, function(cp) {
+    if (scaleAxes) {
+      cp$x_ <- cp$x
+      cp$x  <- cp$x* ( (max(cp$y) - min(cp$y)) / (max(cp$x) - min(cp$x)) )
+    }
+    cp_redu <- cp[-getPointsToRemove(cbind(cp$x, cp$y)), ]
+
+    cp_redu <- data.frame(category= cp_redu$category, x= cp_redu$x_, y= cp_redu$y)
+
+    ch <- chull(cbind(cp_redu$x, cp_redu$y))
+    cp_redu[ch, ]
+
+  })
+
+  # resemble list of dfs to one df
+  hs <- do.call(rbind, c(catsHulls, make.row.names= FALSE))
+
+  # calculate the overlap rate of the (reduced) hulls
   olrs <- overlapRates(catsHulls)
 
   list(x= xel, y= yel, catsPnts= t, catsHulls= hs, olrs= olrs)
 }
-
-
-#d <- processDiagram(res[1,1], res[1,2], inData, "Gestein")

@@ -16,8 +16,8 @@ test_that("diagramsToGenerate gives the correct amount of diagrams", {
 
 test_that("diagramsToGenerate gives no inverse pair", {
   df <- diagramsToGenerate(1:3)
-  df <- df[sapply(1:nrow(df), function(i) all(grepl("/", df[i,], fixed = T))),]
-  df <- df[sapply(1:nrow(df), function(i) {
+  df <- df[sapply(seq_len(nrow(df)), function(i) all(grepl("/", df[i,], fixed = T))),]
+  df <- df[sapply(seq_len(nrow(df)), function(i) {
             a= strsplit(df[i, 1], '/', fixed= TRUE)
             b= strsplit(df[i, 2], '/', fixed= TRUE)
 

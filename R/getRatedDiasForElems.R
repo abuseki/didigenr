@@ -28,7 +28,7 @@ getDiagramsRated <- function(inData, categoryCol= 'category', nCores= 1) {
   message("'getDiagramsRated()' will use ", nCores, " cores!")
   registerDoParallel(nCores)
 
-  olrs <- foreach(i= 1:nrow(dias), .combine = 'c') %dopar% {
+  olrs <- foreach(i= seq_len(nrow(dias)), .combine = 'c') %dopar% {
     rateDiagram(dias[i, 'x'], dias[i, 'y'], inData, categoryCol)
   }
 
