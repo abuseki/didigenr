@@ -13,5 +13,5 @@ reducePointSet(ps, c = 0.85, s = 0.95, e = 0.05)
 }
 \description{
 Convenience function that resolves the returned indices of
-\link{reducePointSet_idx} to points with coordinates
+\link{getPointsToRemove} to points with coordinates
 }

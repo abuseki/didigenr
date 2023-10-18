@@ -2,12 +2,12 @@
 
 export(diagramsToGenerate)
 export(getDiagramsRated)
+export(getOverlapInfo)
 export(getPlotForDiagram)
 export(getPointsToRemove)
 export(getReducedHull)
 export(getWorkingData)
 export(nDiagsForElems)
-export(overlapRates)
 export(processDiagram)
 export(rateDiagram)
 export(reducePointSet)

@@ -5,9 +5,9 @@
 \title{Title}
 \usage{
 getPlotForDiagram(
-  xel,
-  yel,
   dataSrc,
+  xel = "x",
+  yel = "y",
   categoryCol = "category",
   scaleAxes = TRUE,
   facets = FALSE

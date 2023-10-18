@@ -4,7 +4,13 @@
 \alias{processDiagram}
 \title{Title}
 \usage{
-processDiagram(xel, yel, dataSrc, categoryCol = "category", scaleAxes = TRUE)
+processDiagram(
+  dataSrc,
+  xel = "x",
+  yel = "y",
+  categoryCol = "category",
+  scaleAxes = TRUE
+)
 }
 \arguments{
 \item{categoryCol}{}

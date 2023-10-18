@@ -77,7 +77,7 @@ getPointsToRemove <- function(ps, c= .85, s=.95, e=.05) {
 #' Title
 #'
 #' Convenience function that resolves the returned indices of
-#' [reducePointSet_idx] to points with coordinates
+#' [getPointsToRemove] to points with coordinates
 #'
 #' @param ps Set of points as a matrix with x- and y-column
 #' @param c

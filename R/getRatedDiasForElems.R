@@ -23,13 +23,15 @@ getDiagramsRated <- function(inData, categoryCol= 'category', nCores= 1) {
 
   # the diagrams to be generated
   dias <- diagramsToGenerate(elems)
+  message("Will process ", nrow(dias), " diagrams. This might take a while...")
 
   # register parallel back-end
   message("'getDiagramsRated()' will use ", nCores, " cores!")
   registerDoParallel(nCores)
 
   olrs <- foreach(i= seq_len(nrow(dias)), .combine = 'c') %dopar% {
-    rateDiagram(dias[i, 'x'], dias[i, 'y'], inData, categoryCol)
+    dd <- processDiagram(inData, dias[i, 'x'], dias[i, 'y'], categoryCol)
+    rateDiagram(dd$overlapInfo)
   }
 
   olrs_ord <- order(olrs)

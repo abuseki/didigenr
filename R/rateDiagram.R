@@ -8,9 +8,7 @@
 #' @return
 #' @export
 #'
-#' @importFrom stats na.omit
 #' @examples
-rateDiagram <- function(xel, yel, dataSrc, categoryCol= 'category', scaleAxes= TRUE) {
-  d <- processDiagram(xel, yel, dataSrc, categoryCol, scaleAxes)
-  mean(d$olrs$olRate, na.rm = T)
+rateDiagram <- function(overlapInfo) {
+  mean(overlapInfo$olRates, na.rm=T)
 }

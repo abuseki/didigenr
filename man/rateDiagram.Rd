@@ -4,7 +4,7 @@
 \alias{rateDiagram}
 \title{Title}
 \usage{
-rateDiagram(xel, yel, dataSrc, categoryCol = "category", scaleAxes = TRUE)
+rateDiagram(overlapInfo)
 }
 \arguments{
 \item{categoryCol}{}

@@ -6,19 +6,19 @@ test_that("getWorkingData delivers the correct Data", {
   )
 
   # diagramsToGenerate(c('Ai', 'Bi'))
-  expect_equal(getWorkingData('Ai', 'Bi', df, 'Baba'),
+  expect_equal(getWorkingData(df, 'Ai', 'Bi', 'Baba'),
                data.frame(category= df$Baba, x= df$Ai, y= df$Bi)
   )
-  expect_equal(getWorkingData('Ai', 'Ai/Bi', df, 'Baba'),
+  expect_equal(getWorkingData(df, 'Ai', 'Ai/Bi', 'Baba'),
                data.frame(category= df$Baba, x= df$Ai, y= df$Ai/df$Bi)
   )
-  expect_equal(getWorkingData('Ai', 'Bi/Ai', df, 'Baba'),
+  expect_equal(getWorkingData(df, 'Ai', 'Bi/Ai', 'Baba'),
                data.frame(category= df$Baba, x= df$Ai, y= df$Bi/df$Ai)
   )
-  expect_equal(getWorkingData('Bi', 'Ai/Bi', df, 'Baba'),
+  expect_equal(getWorkingData(df, 'Bi', 'Ai/Bi', 'Baba'),
                data.frame(category= df$Baba, x= df$Bi, y= df$Ai/df$Bi)
   )
-  expect_equal(getWorkingData('Bi', 'Bi/Ai', df, 'Baba'),
+  expect_equal(getWorkingData(df, 'Bi', 'Bi/Ai', 'Baba'),
                data.frame(category= df$Baba, x= df$Bi, y= df$Bi/df$Ai)
   )
 })

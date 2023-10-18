@@ -2,5 +2,11 @@
 title: TODO
 ---
 
-* Parameterreihenfolge von processDiagram und davon aufgerufenen Fcts ändern:
-  `processDiagram <- function(dataSrc, xel= "x", yel= "y",  categoryCol= 'category', scaleAxes= TRUE) {...}`
+## High
+
+## Medium
+
+* processDiagram soll auch ohne scaling gehen -- parameter dafür ist eh vorgesehen, wir aber z. Z. nicht verwendet
+
+
+## Low

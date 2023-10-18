@@ -4,14 +4,14 @@
 \alias{getWorkingData}
 \title{Title}
 \usage{
-getWorkingData(xel, yel, dataSrc, categoryCol = "category")
+getWorkingData(dataSrc, xel = "x", yel = "y", categoryCol = "category")
 }
 \arguments{
+\item{dataSrc}{Queried data frame to get the elements or their ratios}
+
 \item{xel}{Element or element ratio on the diagram's x axis}
 
 \item{yel}{Element or element ratio on the diagram's y axis}
-
-\item{dataSrc}{Queried data frame to get the elements or their ratios}
 
 \item{categoryCol}{Name of the column in \code{dataSrc} holding the categories}
 }
