@@ -16,5 +16,5 @@ getWorkingData(dataSrc, xel = "x", yel = "y", categoryCol = "category")
 \item{categoryCol}{Name of the column in \code{dataSrc} holding the categories}
 }
 \description{
-Title
+Normalized data set
 }

@@ -1,5 +1,3 @@
-# see:
-#   https://stackoverflow.com/questions/32328802/where-should-i-put-data-for-automated-tests-with-testthat
 test_that("getOverlapInfo gives the correct overlap rates", {
 
 

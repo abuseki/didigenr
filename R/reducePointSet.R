@@ -1,20 +1,35 @@
-#library(geometry)
-
-
 #' Title
 #'
+#' Reduces a point set to a given confidence coefficient using Delaunay
+#' triangulation as suggested by \insertCite{Han_2020;textual}{didigenr}
+#'
 #' @param ps
-#' @param c
-#' @param s
-#' @param e
+#' @param confCoef confidence coefficient
+#' @param reduRat reduction ratio
+#' @param adjuFact adjustment factor of the reduction ratio
+#'
 #'
 #' @return
+#'
+#' @seealso [processDiagram()]
+#'
+#' @references{
+#'   \insertRef{Han_2020}{didigenr}
+#' }
+#'
 #' @export
 #'
 #' @importFrom geometry delaunayn
+#' @importFrom Rdpack reprompt
 #'
 #' @examples
-getPointsToRemove <- function(ps, c= .85, s=.95, e=.05) {
+getPointsToRemove <- function(ps, confCoef= .85, reduRat=.95, adjuFact=.05) {
+  # message("getPointsToRemove(): confCoef= ", confCoef, ", reduRat= ", reduRat, ", adjuFact= ", adjuFact)
+
+  # trivial cases -- no work to do
+  if (confCoef == 1) return(integer(0))
+  if (confCoef == 0) return(seq.int(NROW(ps)))
+
   ## helper
   dist <- function(x, y) {
     sqrt(sum((x - y) ^ 2))
@@ -28,7 +43,7 @@ getPointsToRemove <- function(ps, c= .85, s=.95, e=.05) {
   # number of original points
   N.next <- N.this <- N.start <- NROW(ps)
 
-  while (N.next > (N.start * c)) {
+  while (N.next > (N.start * confCoef)) {
     N.next <- N.this <- NROW(ps)
 
     # Delaunay triangulation
@@ -52,14 +67,14 @@ getPointsToRemove <- function(ps, c= .85, s=.95, e=.05) {
     l.ord <- order(l, decreasing = TRUE)
 
     while(!(N.next < N.this)) {
-      ps2rm <- trs[l.ord[seq_len((1 - s) * NROW(trs))], ]
+      ps2rm <- trs[l.ord[seq_len((1 - reduRat) * NROW(trs))], ]
       # message("\t will remove ", NROW(ps2rm), " points")
       N.next <- ifelse(length(ps2rm) != 0L, NROW(ps[-ps2rm, ]), NROW(ps))
 
       if (!(N.next < N.this)) {
         # reduction ration was too large, apply adjustment factor
-        s <- s-e
-        message("Adjusted s to ", s)
+        reduRat <- reduRat-adjuFact
+        # message("Adjusted s to ", s)
       }
     }
     # message(sprintf("N.next/N.start= %0.3f%%", N.next/N.start))
@@ -72,43 +87,4 @@ getPointsToRemove <- function(ps, c= .85, s=.95, e=.05) {
   # return the set difference of original row numbers an the one that survived
   # this reduction. These have to be removed
   setdiff(seq.int(N.start), ps[,NCOL(ps)])
-}
-
-
-
-#' Title
-#'
-#' Convenience function that resolves the returned indices of
-#' [getPointsToRemove] to points with coordinates
-#'
-#' @param ps Set of points as a matrix with x- and y-column
-#' @param c
-#' @param s
-#' @param e
-#'
-#' @return
-#' @export
-#'
-#' @examples
-reducePointSet<- function(ps, c= .85, s=.95, e=.05) {
-  ps[-getPointsToRemove(ps, c, s, e), ]
-}
-
-
-
-#' Title
-#'
-#' @param ps
-#' @param c
-#' @param s
-#' @param e
-#'
-#' @return
-#' @export
-#'
-#' @examples
-getReducedHull <- function(ps, c= .85, s=.95, e=.05) {
-  ps_redu <- reducePointSet(ps, c, s, e)
-  ch <- chull(ps_redu)
-  ps_redu[ch, ]
 }

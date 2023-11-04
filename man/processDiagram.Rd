@@ -2,19 +2,45 @@
 % Please edit documentation in R/processDiagram.R
 \name{processDiagram}
 \alias{processDiagram}
-\title{Title}
+\title{Process a discrimination diagram}
 \usage{
 processDiagram(
   dataSrc,
   xel = "x",
   yel = "y",
   categoryCol = "category",
-  scaleAxes = TRUE
+  logCoords = FALSE,
+  ...
 )
 }
 \arguments{
-\item{categoryCol}{}
+\item{...}{Will be passed to \code{\link[=getPointsToRemove]{getPointsToRemove()}}}
 }
 \description{
-Title
+Build and process a discrimination diagram by following these steps:
+}
+\details{
+\enumerate{
+\item Select elements and a categorical variable from a data set.
+\item Remove rows that contain NAs.
+\item Divide the data set into categories.
+\item Reduce the points set per category to a confidence coefficient using
+topological theory and Delaunay triangulation, as proposed by
+\insertCite{Han_2020;textual}{didigenr}.
+\item The convex hulls for the reduced point sets of the categories are
+constructed.
+\item The intersecting areas of these hulls are computed.
+}
+
+The discrimination diagram can be evaluated, for example, by examining
+the overlapping regions.
+}
+\references{
+{
+\insertRef{Han_2020}{didigenr}
+}
+}
+\seealso{
+\code{\link[=getPointsToRemove]{getPointsToRemove()}} for reducing the point set, \code{\link[=getOverlapInfo]{getOverlapInfo()}}
+for the intersecting areas of the hulls
 }

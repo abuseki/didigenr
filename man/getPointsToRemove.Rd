@@ -4,11 +4,24 @@
 \alias{getPointsToRemove}
 \title{Title}
 \usage{
-getPointsToRemove(ps, c = 0.85, s = 0.95, e = 0.05)
+getPointsToRemove(ps, confCoef = 0.85, reduRat = 0.95, adjuFact = 0.05)
 }
 \arguments{
-\item{e}{}
+\item{confCoef}{confidence coefficient}
+
+\item{reduRat}{reduction ratio}
+
+\item{adjuFact}{adjustment factor of the reduction ratio}
 }
 \description{
-Title
+Reduces a point set to a given confidence coefficient using Delaunay
+triangulation as suggested by \insertCite{Han_2020;textual}{didigenr}
+}
+\references{
+{
+\insertRef{Han_2020}{didigenr}
+}
+}
+\seealso{
+\code{\link[=processDiagram]{processDiagram()}}
 }

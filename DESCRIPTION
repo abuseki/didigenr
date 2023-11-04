@@ -1,10 +1,14 @@
-Package: geodisctoponator
-Title: What the Package Does (One Line, Title Case)
+Package: didigenr
+Title: Discrimination Diagrams Generator and Evaluator
 Version: 0.0.0.9003
 Authors@R: 
     person("Gerald", "Schuberth-Hlavač", email= "abuseki@synapticgap.com",
       role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: The package provides the infrastructure to automatically generate 
+  and evaluate discrimination diagrams. It uses Delaunay triangulation and
+  intersection area calculation as proposed by Han et al. (2020)
+  <doi:10.3390/min10010062> to generate and evaluate the discrimination
+  diagrams.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -16,11 +20,14 @@ Imports:
     doParallel,
     foreach,
     geometry,
+    ggplot2,
     grDevices,
+    Rdpack,
     stats,
     utils
 Suggests: 
     spelling,
     testthat (>= 3.0.0)
+RdMacros: Rdpack
 Config/testthat/edition: 3
 Language: en-US

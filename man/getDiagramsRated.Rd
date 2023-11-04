@@ -2,9 +2,15 @@
 % Please edit documentation in R/getRatedDiasForElems.R
 \name{getDiagramsRated}
 \alias{getDiagramsRated}
-\title{Title}
+\title{Build and evaluate discrimination diagrams}
 \usage{
-getDiagramsRated(inData, categoryCol = "category", nCores = 1)
+getDiagramsRated(
+  inData,
+  categoryCol = "category",
+  logCoords = FALSE,
+  nCores = 1,
+  ...
+)
 }
 \arguments{
 \item{inData}{data frame with one category column and element value columns}
@@ -12,14 +18,32 @@ getDiagramsRated(inData, categoryCol = "category", nCores = 1)
 \item{categoryCol}{name of the category column in the \code{inData}}
 
 \item{nCores}{Number of core to use when rating diagrams in parallel}
+
+\item{...}{will be passed to \code{\link[=processDiagram]{processDiagram()}}}
 }
 \value{
 data frame holding the x- and y-axis and the overlap rate of this diagram
 }
 \description{
-\itemize{
-\item df [\code{categoryCol}, el1, el2, ..., elN
-\item diagrams will be generated
-\item and all these dias will be rated
+Performs the entire process of creating and evaluating discrimination
+diagrams as recommended by \insertCite{Han_2020;textual}{didigenr}:
 }
+\details{
+\enumerate{
+\item All meaningful combinations of elements are generated.
+\item All discrimination diagrams are generated and the point sets of the given
+categories are reduced to a confidence coefficient.
+\item These diagrams are evaluated by the intersection areas of the computed
+hulls.
+}
+}
+\references{
+{
+\insertRef{Han_2020}{didigenr}
+}
+}
+\seealso{
+\code{\link[=processDiagram]{processDiagram()}} for build a discrimination diagram,
+\code{\link[=getOverlapInfo]{getOverlapInfo()}} and \code{\link[=rateDiagram]{rateDiagram()}} for computing the intersection areas
+and evaluation a discrimination diagram by the intersection areas
 }

@@ -7,7 +7,7 @@
 rateDiagram(overlapInfo)
 }
 \arguments{
-\item{categoryCol}{}
+\item{overlapInfo}{}
 }
 \description{
 Title

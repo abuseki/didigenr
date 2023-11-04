@@ -2,7 +2,7 @@
 #'
 #' @param regions named list of convex hull coordinates. Names are the
 #'   categories and their convex hulls coordinates are presented in x-y-matrix
-#'   like datastructures. This is what [processDiagram()] returns as
+#'   like data structures. This is what [processDiagram()] returns as
 #'   `catReducedHulls`
 #'
 #' @return List of

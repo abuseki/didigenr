@@ -9,7 +9,7 @@ getOverlapInfo(regions)
 \arguments{
 \item{regions}{named list of convex hull coordinates. Names are the
 categories and their convex hulls coordinates are presented in x-y-matrix
-like datastructures. This is what \code{\link[=processDiagram]{processDiagram()}} returns as
+like data structures. This is what \code{\link[=processDiagram]{processDiagram()}} returns as
 \code{catReducedHulls}}
 }
 \value{

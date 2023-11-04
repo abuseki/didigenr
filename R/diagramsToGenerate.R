@@ -45,7 +45,7 @@ diagramsToGenerate <- function(elems) {
 #' have to be processed.
 #'
 #' @param nElems number of elements for which the number of diagrams will be
-#'   calcuated
+#'   calculated
 #'
 #' @return
 #' @export

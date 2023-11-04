@@ -8,7 +8,7 @@ nDiagsForElems(nElems)
 }
 \arguments{
 \item{nElems}{number of elements for which the number of diagrams will be
-calcuated}
+calculated}
 }
 \description{
 Simple function to calculate the number of element (element ratio) pairs for

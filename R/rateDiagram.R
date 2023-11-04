@@ -1,9 +1,6 @@
 #' Title
 #'
-#' @param xel
-#' @param yel
-#' @param dataSrc
-#' @param categoryCol
+#' @param overlapInfo
 #'
 #' @return
 #' @export
