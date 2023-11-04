@@ -31,3 +31,5 @@ Suggests:
 RdMacros: Rdpack
 Config/testthat/edition: 3
 Language: en-US
+URL: https://github.com/abuseki/didigenr
+BugReports: https://github.com/abuseki/didigenr/issues
