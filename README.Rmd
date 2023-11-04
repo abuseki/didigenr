@@ -1,0 +1,38 @@
+---
+output: github_document
+bibliography: inst/REFERENCES.bib
+link-citations: true
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# didigenr
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+The package provides the infrastructure to automatically generate and evaluate
+discrimination diagrams.
+
+It uses Delaunay triangulation and intersection area  calculation as proposed by
+@Han_2020 to generate and evaluate the discrimination diagrams.
+
+## Installation
+
+You can install the development version of didigenr from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("abuseki/didigenr")
+```
+
+## Example
+
+*_TODO_*
+
+
+## References
+
+:::{#refs}
+:::
