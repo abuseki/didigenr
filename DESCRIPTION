@@ -8,7 +8,8 @@ Description: The package provides the infrastructure to automatically generate
   and evaluate discrimination diagrams. It uses Delaunay triangulation and
   intersection area calculation as proposed by Han et al. (2020)
   <doi:10.3390/min10010062> to generate and evaluate the discrimination
-  diagrams.
+  diagrams. Function to plot the discrimination diagrams, using ggplot, are
+  included.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
