@@ -1,7 +1,7 @@
 #' Build and evaluate discrimination diagrams
 #'
 #' Performs the entire process of creating and evaluating discrimination
-#' diagrams as recommended by \insertCite{Han_2020;textual}{didigenr}:
+#' diagrams as proposed by \insertCite{Han_2020;textual}{didigenr}:
 #'
 #' 1) All meaningful combinations of elements are generated.
 #' 2) All discrimination diagrams are generated and the point sets of the given
