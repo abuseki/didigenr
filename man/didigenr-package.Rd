@@ -6,7 +6,15 @@
 \alias{didigenr-package}
 \title{didigenr: Discrimination Diagrams Generator and Evaluator}
 \description{
-The package provides the infrastructure to automatically generate and evaluate discrimination diagrams. It uses Delaunay triangulation and intersection area calculation as proposed by Han et al. (2020) \doi{10.3390/min10010062} to generate and evaluate the discrimination diagrams.
+The package provides the infrastructure to automatically generate and evaluate discrimination diagrams. It uses Delaunay triangulation and intersection area calculation as proposed by Han et al. (2020) \doi{10.3390/min10010062} to generate and evaluate the discrimination diagrams. Function to plot the discrimination diagrams, using ggplot, are included.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/abuseki/didigenr}
+  \item Report bugs at \url{https://github.com/abuseki/didigenr/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Gerald Schuberth-Hlavač \email{abuseki@synapticgap.com}

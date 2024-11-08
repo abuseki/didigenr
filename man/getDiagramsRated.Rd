@@ -26,7 +26,7 @@ data frame holding the x- and y-axis and the overlap rate of this diagram
 }
 \description{
 Performs the entire process of creating and evaluating discrimination
-diagrams as recommended by \insertCite{Han_2020;textual}{didigenr}:
+diagrams as proposed by \insertCite{Han_2020;textual}{didigenr}:
 }
 \details{
 \enumerate{
