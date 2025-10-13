@@ -103,7 +103,7 @@ hexPlotForDiagramData <-  function(dd, facets= FALSE) {
 #' @return
 #' @export
 #'
-#' @importFrom ggplot2 ggplot aes geom_point geom_segment facet_wrap theme_light
+#' @importFrom ggplot2 ggplot aes geom_point geom_segment facet_wrap theme_light labs
 #'
 #' @examples
 plotTriagles <- function(dd, facets= FALSE){
@@ -132,6 +132,8 @@ plotTriagles <- function(dd, facets= FALSE){
     geom_point(data= dd$catPnts, shape= 21, fill= NA),
 
     if (facets) facet_wrap(~category),
+
+    labs(x= x_lab, y= y_lab),
 
     theme_light()
   )
