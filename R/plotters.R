@@ -106,7 +106,7 @@ hexPlotForDiagramData <-  function(dd, facets= FALSE) {
 #' @importFrom ggplot2 ggplot aes geom_point geom_segment facet_wrap theme_light labs
 #'
 #' @examples
-plotTriagles <- function(dd, facets= FALSE){
+plotTriangles <- function(dd, facets= FALSE){
   x_lab <- if (!dd$logCoords) dd$xel else sprintf("log(%s)", dd$xel)
   y_lab <- if (!dd$logCoords) dd$yel else sprintf("log(%s)", dd$yel)
 
