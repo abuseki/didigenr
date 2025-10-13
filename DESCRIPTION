@@ -2,7 +2,7 @@ Package: didigenr
 Title: Discrimination Diagrams Generator and Evaluator
 Version: 0.1.0.9000
 Authors@R: 
-    person("Gerald", "Schuberth-Hlavač", email= "abuseki@synapticgap.com",
+    person("Gerald", "Schuberth", email= "abuseki@synapticgap.com",
       role = c("aut", "cre"))
 Description: The package provides the infrastructure to automatically generate 
   and evaluate discrimination diagrams. It uses Delaunay triangulation and
