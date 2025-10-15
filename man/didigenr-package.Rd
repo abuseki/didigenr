@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Gerald Schuberth-Hlavač \email{abuseki@synapticgap.com}
+\strong{Maintainer}: Gerald Schuberth \email{abuseki@synapticgap.com}
 
 }
 \keyword{internal}
