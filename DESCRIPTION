@@ -1,6 +1,6 @@
 Package: didigenr
 Title: Discrimination Diagrams Generator and Evaluator
-Version: 0.1.0.9001
+Version: 0.1.0.9002
 Authors@R: 
     person("Gerald", "Schuberth", email= "abuseki@synapticgap.com",
       role = c("aut", "cre"))
